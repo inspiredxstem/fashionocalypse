@@ -21,7 +21,6 @@ TopDownGame.Game.prototype = {
         this.x = 0
         this.y = 0
         this.player = this.add.sprite(250,250,'player', 'enemy');
-        this.bullets  = this.add.sprite
         this.player.anchor.setTo(0, 0);
         this.player.animations.add('move');
         
@@ -41,6 +40,9 @@ TopDownGame.Game.prototype = {
         this.dress4.anchor.setTo(-6.10,-8.10);
         
         this.game.physics.enable(this.dress1, Phaser.Physics.ARCADE);
+        this.game.physics.enable(this.dress2, Phaser.Physics.ARCADE);
+        this.game.physics.enable(this.dress3, Phaser.Physics.ARCADE);
+        this.game.physics.enable(this.dress4, Phaser.Physics.ARCADE);
         this.game.physics.enable(this.player, Phaser.Physics.ARCADE);
 
         
@@ -51,7 +53,10 @@ TopDownGame.Game.prototype = {
     },
     update: function(){
         
-        
+         
+         if(this.input.activePointer.isDown){
+             fire(this)
+         }
         if(this.cursors.up.isDown){
             this.y+=0.1;
             this.enemy.y-=0.1;
@@ -77,16 +82,24 @@ TopDownGame.Game.prototype = {
         this.enemy.anchor.setTo(this.enemy.x , this.enemy.y);
         
         this.game.physics.arcade.collide(this.player, this.dress1, collisionHandler, null, this);
+        this.game.physics.arcade.collide(this.player, this.dress2, collisionHandler, null, this);
+        this.game.physics.arcade.collide(this.player, this.dress3, collisionHandler, null, this);
+        this.game.physics.arcade.collide(this.player, this.dress4, collisionHandler, null, this);
+
         
         function collisionHandler (obj1, obj2) {
 
             //game.stage.backgroundColor = '#992d2d';
             console.log("collision!");
             obj2.destroy();
+            $('#dress1').html("<img src='assets/images/purple-dress.png'></img>");
 
         }
-        
+      function fire(game){
+          console.log(game)
+          this.bullet = game.add.sprite(250,250,'circle')
+      }
     }
-    
+ 
     
 };
