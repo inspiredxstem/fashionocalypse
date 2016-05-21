@@ -41,7 +41,7 @@ body {
 }
 .heart{
     display: inline-block;
-    background-image: url("assets/images/heart.png");
+    background-image: url("/assets/images/heart.png");
     height: 25px;
     width: 25px;
     border-radius: 10px;

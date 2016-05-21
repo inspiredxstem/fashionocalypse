@@ -24,14 +24,16 @@ TopDownGame.Game.prototype = {
         this.player.anchor.setTo(0, 0);
         this.player.animations.add('move');
         
-        
+        //enemy
         this.enemy= this.add.sprite(300,300, 'enemy', 'player');
         this.enemy.health = 5;
         this.enemy.x = 0;
         this.enemy.y = 0;
-        this.physics.enable(this.enemy, Phaser.Physics.ARCADE)
-        
+        this.physics.enable(this.enemy, Phaser.Physics.ARCADE);
+        //enemy movement
         this.enemy.body.velocity.x = -2.5;
+        this.enemy.name = "enemy";
+        this.player.name = "player";
         
         
         this.dress1 = this.add.sprite(50,50, 'purple-dress');
@@ -62,6 +64,13 @@ TopDownGame.Game.prototype = {
         this.game.globals = this;
     },
     update: function(){
+        //console.log(this.enemy.body.x, this.enemy.body.y);
+        if (this.enemy.body.x > 600){
+            this.enemy.body.velocity.x = 2.5;
+        }
+        if (this.enemy.body.x < 0){
+            this.enemy.body.velocity.x = -2.5;
+        }
         
          
          if(this.input.activePointer.isDown){
@@ -93,7 +102,7 @@ TopDownGame.Game.prototype = {
         this.game.physics.arcade.collide(this.player, this.dress2, collisionHandler, null, this);
         this.game.physics.arcade.collide(this.player, this.dress3, collisionHandler, null, this);
         this.game.physics.arcade.collide(this.player, this.dress4, collisionHandler, null, this);
-        
+        this.game.physics.arcade.collide(this.player, this.enemy, collisionHandler, null, this);
 
         if(false) {
             if(this.bullet.direction =="up"){
@@ -117,17 +126,25 @@ TopDownGame.Game.prototype = {
 
             //game.stage.backgroundColor = '#992d2d';
             console.log("collision!");
-            obj2.destroy();
+            
             console.log(obj2.name);
             //$('#dress1').html("<img src='assets/images/purple-dress.png'></img>");
             if(obj2.name == "purple-dress"){
-                $('#dress1').append("<img src='assets/images/purple-dress.png'></img>"); 
+                $('#dress1').append("<img src='assets/images/purple-dress.png'></img>");
+                obj2.destroy();
             } else if (obj2.name == "pink-dress"){
-                $('#dress1').append("<img src='assets/images/pink-dress.png'></img>"); 
+                $('#dress1').append("<img src='assets/images/pink-dress.png'></img>");
+                obj2.destroy();
             } else if (obj2.name == "blue-dress"){
-                $('#dress1').append("<img src='assets/images/blue-dress.png'></img>"); 
+                $('#dress1').append("<img src='assets/images/blue-dress.png'></img>");
+                obj2.destroy();
             } else if (obj2.name == "glasses"){
-                $('#dress1').append("<img src='assets/images/glasses.png'></img>"); 
+                $('#dress1').append("<img src='assets/images/glasses.png'></img>");
+                obj2.destroy();
+            }
+            if (obj2.name == "enemy"){
+                //alert('lost');
+                onHit();
             }
 
         }
@@ -143,9 +160,12 @@ TopDownGame.Game.prototype = {
           game.bullet.anchor.setTo(game.bullet.x, game.bullet.y)
           }
       }
-    }
-    
-    
- 
-    
+  function onHit(){
+     $('.heart')[0].remove()
+      if($('.heart').length == 0){
+          window.location.href = "/gameover.html"   
+        
+    } 
+  }
+ }    
 };
