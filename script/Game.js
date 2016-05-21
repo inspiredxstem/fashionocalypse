@@ -93,20 +93,17 @@ TopDownGame.Game.prototype = {
         if(this.bullet) {
             if(this.bullet.direction =="up"){
                 this.bullet.x += 0
-                this.bullet.y += 0.1
+                this.bullet.y -= 0.1
             }else if(this.bullet.direction =="down"){
-                this.bullet.x-=0
-                this.bullet.y-=0.1
+                this.bullet.x+=0
+                this.bullet.y+=0.1
             } else if(this.bullet.direction =="left"){
-                this.bullet.x-=0.1
-                this.bullet.y+=0
-            } else if(this.bullet.direction =="right"){
                 this.bullet.x+=0.1
                 this.bullet.y+=0
+            } else if(this.bullet.direction =="right"){
+                this.bullet.x-=0.1
+                this.bullet.y+=0
             }
-            this.bullet.x -= 0.1
-            this.bullet.y -= 0
-                        console.log(this.bullet.x, this.bullet.y)
 
             this.bullet.anchor.setTo(this.bullet.x, this.bullet.y)
         }
@@ -124,7 +121,7 @@ TopDownGame.Game.prototype = {
           console.log(game)
           if(!game.bullet) {
               
-          game.bullet = game.add.sprite(250,250,'circle')
+          game.bullet = game.add.sprite(500,500,'circle')
           game.bullet.x = 0
           game.bullet.y= 0;
           game.bullet.direction = game.player.direction
