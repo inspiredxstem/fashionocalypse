@@ -1,7 +1,7 @@
 /*global Phaser*/
 var TopDownGame = TopDownGame || {};
 
-TopDownGame.game = new Phaser.Game(320, 320, Phaser.AUTO, '');
+TopDownGame.game = new Phaser.Game(500, 500, Phaser.AUTO, '');
 
 TopDownGame.game.state.add('Boot', TopDownGame.Boot);
 TopDownGame.game.state.add('Preload', TopDownGame.Preload);

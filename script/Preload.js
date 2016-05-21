@@ -10,7 +10,7 @@ TopDownGame.Preload.prototype = {
     this.load.setPreloadSprite(this.preloadBar);
     
     this.load.image('tile', 'assets/images/tiles.png');
-
+    this.load.image('player', 'assets/images/player.png');
     this.load.tilemap('tilemap0','assets/TileMaps/tilemap0.json', null, Phaser.Tilemap.TILED_JSON);
     },
     create: function(){
