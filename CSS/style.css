@@ -1,10 +1,18 @@
-div {
+.screen {
     font-family: "calibri";
     font-size: 25px;
+    display: none;
+}
+#GameScreen {
+display: block;
+}
+#StartMenu {
+display: block;
 }
 p {
     text-align: justify;
     position: relative;
+    color: white; 
 }
 button {
     background-color: #3056FF;
@@ -15,6 +23,26 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
 body {
     background-color: black;
+}
+#dress1 {
+    display: inline-block;
+    background-color: gray;
+    height: 25px;
+    width: 620px;
+}
+#hearts{
+    display: inline-block;
+    background-color: white;
+    height: 25px;
+    width: 100px;
+}
+.heart{
+    display: inline-block;
+    background-image: url("assets/images/heart.png");
+    height: 25px;
+    width: 25px;
+    border-radius: 10px;
 }

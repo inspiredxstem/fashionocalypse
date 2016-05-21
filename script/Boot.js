@@ -5,6 +5,7 @@ TopDownGame.Boot = function(){};
 //setting game configuration and loading the assets for the loading screen
 TopDownGame.Boot.prototype = {
     preload: function() {
+        // this is needed for the images to work on rawgit
         this.load.crossOrigin = "anonymous";
         //assets we'll use in the loading screen
         this.load.image('preloadbar', 'assets/images/preloader-bar.png');
