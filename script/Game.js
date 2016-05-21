@@ -120,7 +120,12 @@ TopDownGame.Game.prototype = {
             console.log("collision!");
             obj2.destroy();
             console.log(obj2.name);
-            $('#dress1').html("<img src='assets/images/purple-dress.png'></img>");
+            //$('#dress1').html("<img src='assets/images/purple-dress.png'></img>");
+            if(obj2.name == "purple-dress"){
+                $('#dress1').append("<img src='assets/images/purple-dress.png'></img>"); 
+            } else if (obj2.name == "pink-dress"){
+                $('#dress1').append("<img src='assets/images/pink-dress.png'></img>"); 
+            }
 
         }
       function fire(game){
@@ -128,9 +133,9 @@ TopDownGame.Game.prototype = {
           console.log(game)
           if(!game.bullet) {
               
-          game.bullet = game.add.sprite(50,50,'circle')
-          game.bullet.x = 0
-          game.bullet.y= 0;
+          game.bullet = game.add.sprite(250,250,'circle')
+          game.bullet.x = game.player.anchor.x;
+          game.bullet.y= game.player.anchor.y;
           game.bullet.direction = game.player.direction
           game.bullet.anchor.setTo(game.bullet.x, game.bullet.y)
           }

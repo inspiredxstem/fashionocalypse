@@ -9,7 +9,8 @@ TopDownGame.Boot.prototype = {
     this.load.image('preloadbar', 'assets/images/preloader-bar.png');
   },
     create: function(){
-        this.game.backgroundColor = '#ff0'
+        this.game.crossOrigin = "anonymous";
+        this.game.backgroundColor = '#ff0';
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
             this.state.start('Preload');
 
