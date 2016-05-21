@@ -7,7 +7,7 @@ p {
     position: relative;
 }
 button {
-    background-color: #4CAF50;
+    background-color: #3056FF;
     border: none;
     color: white;
     padding: 10px 22px;
@@ -15,5 +15,4 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    align: right
 }

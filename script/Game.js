@@ -39,6 +39,12 @@ TopDownGame.Game.prototype = {
         this.dress4 = this.add.sprite(50,50, 'pink-dress');
         this.dress4.anchor.setTo(-6.10,-8.10);
         
+        this.dress1.name = "purple-dress";
+        this.dress2.name ="blue-dress";
+        this.dress3.name = "pink-dress";
+        this.dress4.name = "pink-dress1";
+
+        
         this.game.physics.enable(this.dress1, Phaser.Physics.ARCADE);
         this.game.physics.enable(this.dress2, Phaser.Physics.ARCADE);
         this.game.physics.enable(this.dress3, Phaser.Physics.ARCADE);
@@ -93,10 +99,10 @@ TopDownGame.Game.prototype = {
         if(this.bullet) {
             if(this.bullet.direction =="up"){
                 this.bullet.x += 0
-                this.bullet.y -= 0.1
+                this.bullet.y += 0.1
             }else if(this.bullet.direction =="down"){
                 this.bullet.x+=0
-                this.bullet.y+=0.1
+                this.bullet.y-=0.1
             } else if(this.bullet.direction =="left"){
                 this.bullet.x+=0.1
                 this.bullet.y+=0
@@ -113,6 +119,7 @@ TopDownGame.Game.prototype = {
             //game.stage.backgroundColor = '#992d2d';
             console.log("collision!");
             obj2.destroy();
+            console.log(obj2.name);
             $('#dress1').html("<img src='assets/images/purple-dress.png'></img>");
 
         }
@@ -121,7 +128,7 @@ TopDownGame.Game.prototype = {
           console.log(game)
           if(!game.bullet) {
               
-          game.bullet = game.add.sprite(500,500,'circle')
+          game.bullet = game.add.sprite(50,50,'circle')
           game.bullet.x = 0
           game.bullet.y= 0;
           game.bullet.direction = game.player.direction
