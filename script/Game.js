@@ -125,6 +125,8 @@ TopDownGame.Game.prototype = {
                 $('#dress1').append("<img src='assets/images/purple-dress.png'></img>"); 
             } else if (obj2.name == "pink-dress"){
                 $('#dress1').append("<img src='assets/images/pink-dress.png'></img>"); 
+            } else if (obj2.name == "blue-dress"){
+                $('#dress1').append("<img src='assets/images/blue-dress.png'></img>"); 
             }
 
         }
