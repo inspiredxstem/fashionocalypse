@@ -127,6 +127,8 @@ TopDownGame.Game.prototype = {
                 $('#dress1').append("<img src='assets/images/pink-dress.png'></img>"); 
             } else if (obj2.name == "blue-dress"){
                 $('#dress1').append("<img src='assets/images/blue-dress.png'></img>"); 
+            } else if (obj2.name == "pink-dress1"){
+                $('#dress1').append("<img src='assets/images/pink-dress.png'></img>"); 
             }
 
         }
@@ -134,6 +136,7 @@ TopDownGame.Game.prototype = {
           
           console.log(game)
           if(!game.bullet) {
+              console.log(game.player.anchor)
               
           game.bullet = game.add.sprite(250,250,'circle')
           game.bullet.x = game.player.anchor.x;
