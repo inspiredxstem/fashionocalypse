@@ -28,6 +28,8 @@ button {
 }
 body {
     background-color: black;
+    color:white;
+    text-align:center;
 }
 #dress1 {
     display: inline-block;

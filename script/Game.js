@@ -91,9 +91,6 @@ TopDownGame.Game.prototype = {
         }
         
          
-         if(this.input.activePointer.isDown){
-             fire(this)
-         }
         if(this.cursors.up.isDown){
             this.y+=0.1;
             this.player.anchor.setTo(this.x, this.y);
@@ -121,24 +118,8 @@ TopDownGame.Game.prototype = {
         this.game.physics.arcade.collide(this.player, this.dress3, collisionHandler, null, this);
         this.game.physics.arcade.collide(this.player, this.dress4, collisionHandler, null, this);
         this.game.physics.arcade.collide(this.player, this.enemy, collisionHandler, null, this);
+        this.game.physics.arcade.collide(this.player, this.enemy2, collisionHandler, null, this);
 
-        if(false) {
-            if(this.bullet.direction =="up"){
-                this.bullet.x += 0
-                this.bullet.y += 0.1
-            }else if(this.bullet.direction =="down"){
-                this.bullet.x+=0
-                this.bullet.y-=0.1
-            } else if(this.bullet.direction =="left"){
-                this.bullet.x+=0.1
-                this.bullet.y+=0
-            } else if(this.bullet.direction =="right"){
-                this.bullet.x-=0.1
-                this.bullet.y+=0
-            }
-
-            this.bullet.anchor.setTo(this.bullet.x, this.bullet.y)
-        }
         
         function collisionHandler (obj1, obj2) {
 
@@ -160,11 +141,12 @@ TopDownGame.Game.prototype = {
                 $('#dress1').append("<img src='assets/images/glasses.png'></img>");
                 obj2.destroy();
             }
+            console.log(obj2.name);
             if (obj2.name == "enemy" || obj2.name == "enemy2"){
                 //alert('lost');
                 onHit();
             }
-            gameWon()
+            gameWon();
 
         }
   function onHit(){
