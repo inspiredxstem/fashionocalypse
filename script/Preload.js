@@ -11,6 +11,8 @@ TopDownGame.Preload.prototype = {
     
     this.load.image('tile', 'assets/images/tiles.png');
     this.load.image('player', 'assets/images/player.png');
+    this.load.image('dress', 'assets/images/purple-dress.png');
+    this.load.image('enemy', 'assets/images/enemy.png');
     this.load.tilemap('tilemap0','assets/TileMaps/tilemap0.json', null, Phaser.Tilemap.TILED_JSON);
     },
     create: function(){
