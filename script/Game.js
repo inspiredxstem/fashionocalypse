@@ -21,6 +21,7 @@ TopDownGame.Game.prototype = {
         this.x = 0
         this.y = 0
         this.player = this.add.sprite(250,250,'player', 'enemy');
+        this.bullets  = this.add.sprite
         this.player.anchor.setTo(0, 0);
         this.player.animations.add('move');
         
@@ -38,6 +39,10 @@ TopDownGame.Game.prototype = {
         this.dress3.anchor.setTo(-7.90,-3.90);
         this.dress4 = this.add.sprite(50,50, 'dress');
         this.dress4.anchor.setTo(-6.10,-8.10);
+        
+        this.game.physics.enable(this.dress1, Phaser.Physics.ARCADE);
+        this.game.physics.enable(this.player, Phaser.Physics.ARCADE);
+
         
         //map = this.add.tilemap('tilemap0')
         //map.addTilesetImage('images','tile')
@@ -60,14 +65,26 @@ TopDownGame.Game.prototype = {
         }
         else if(this.cursors.left.isDown){
             this.x+=0.1;
+            this.enemy.x-=0.1
             this.player.anchor.setTo(this.x, this.y);
         }
         else if(this.cursors.right.isDown){
             this.x-=0.1;
+            this.enemy.x+=0.1
             this.player.anchor.setTo(this.x, this.y);
         }
         //if(this.)
         this.enemy.anchor.setTo(this.enemy.x , this.enemy.y);
+        
+        this.game.physics.arcade.collide(this.player, this.dress1, collisionHandler, null, this);
+        
+        function collisionHandler (obj1, obj2) {
+
+            //game.stage.backgroundColor = '#992d2d';
+            console.log("collision!");
+            obj2.destroy();
+
+        }
         
     }
     
