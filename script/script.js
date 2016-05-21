@@ -8,7 +8,7 @@ $("#buttonStart").click(function(){
 //next button show game
 $("#buttonIntro").click(function(){
     $("#Intro").hide();
-    $("#GameScreen").show();
+    window.location="game.html"
 })
         
 }

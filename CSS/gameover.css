@@ -1,5 +1,14 @@
 h1 {
-    font-family: 'Share Tech'
-Background-img:"" 
+    font-family: 'Share Tech';
+    font-size: 50px;
+    text-align: center;
+}
+p {
+    font-family: 'Share Tech';
+    font-size: 30px;
+    text-align: center;
+}
+img {
+    margin-left: 35%
     
 }

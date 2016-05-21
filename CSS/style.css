@@ -2,6 +2,8 @@
     font-family: "calibri";
     font-size: 25px;
     display: none;
+    width: 735px;
+    margin: auto;
 }
 #GameScreen {
 display: block;

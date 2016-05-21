@@ -24,7 +24,7 @@ TopDownGame.Game.prototype = {
         this.player.anchor.setTo(0, 0);
         this.player.animations.add('move');
         
-        //enemy
+        //enemy1
         this.enemy= this.add.sprite(300,300, 'enemy', 'player');
         this.enemy.health = 5;
         this.enemy.x = 0;
@@ -33,6 +33,17 @@ TopDownGame.Game.prototype = {
         //enemy movement
         this.enemy.body.velocity.x = -2.5;
         this.enemy.name = "enemy";
+        
+        //enemy2
+        this.enemy2= this.add.sprite(300,300, 'enemy2', 'player2');
+        this.enemy2.health = 5;
+        this.enemy2.x = 0;
+        this.enemy2.y = 100;
+        this.physics.enable(this.enemy2, Phaser.Physics.ARCADE);
+        //enemy movemen2
+        this.enemy2.body.velocity.x = 200.5;
+        this.enemy2.name = "enemy2";
+        
         this.player.name = "player";
         
         
@@ -70,6 +81,13 @@ TopDownGame.Game.prototype = {
         }
         if (this.enemy.body.x < 0){
             this.enemy.body.velocity.x = -2.5;
+        }
+        //console.log(this.enemy2.body.x);
+         if (this.enemy2.body.x > 600){
+            this.enemy2.body.velocity.x = -200.5;
+        }
+        if (this.enemy2.body.x < 0){
+            this.enemy2.body.velocity.x = 200.5;
         }
         
          
@@ -142,30 +160,24 @@ TopDownGame.Game.prototype = {
                 $('#dress1').append("<img src='assets/images/glasses.png'></img>");
                 obj2.destroy();
             }
-            if (obj2.name == "enemy"){
+            if (obj2.name == "enemy" || obj2.name == "enemy2"){
                 //alert('lost');
                 onHit();
             }
+            gameWon()
 
         }
-      function fire(game){
-          
-          if(!game.bullet) {
-              console.log(game.player.anchor)
-              
-          game.bullet = game.add.sprite(250,250,'circle')
-          game.bullet.x = game.player.anchor.x;
-          game.bullet.y = game.player.anchor.y;
-          game.bullet.direction = game.player.direction
-          game.bullet.anchor.setTo(game.bullet.x, game.bullet.y)
-          }
-      }
   function onHit(){
      $('.heart')[0].remove()
       if($('.heart').length == 0){
-          window.location.href = "/gameover.html"   
+          window.location.href = "gameover.html"   
         
-    } 
+    }
   }
- }    
-};
+    function gameWon(){
+        if($('#dress1 img').length == 4){
+            window.location.href = "gamewin.html"
+        }
+    }
+  }
+ };
