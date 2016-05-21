@@ -30,13 +30,13 @@ TopDownGame.Game.prototype = {
         this.enemy.y = 0;
         
         
-        this.dress1 = this.add.sprite(50,50, 'dress');
+        this.dress1 = this.add.sprite(50,50, 'purple-dress');
         this.dress1.anchor.setTo(-4.70,1.25);
-        this.dress2 = this.add.sprite(50,50, 'dress');
+        this.dress2 = this.add.sprite(50,50, 'blue-dress');
         this.dress2.anchor.setTo(-3.60,-6.60);
-        this.dress3 = this.add.sprite(50,50, 'dress');
+        this.dress3 = this.add.sprite(50,50, 'pink-dress');
         this.dress3.anchor.setTo(-7.90,-3.90);
-        this.dress4 = this.add.sprite(50,50, 'dress');
+        this.dress4 = this.add.sprite(50,50, 'pink-dress');
         this.dress4.anchor.setTo(-6.10,-8.10);
         
         this.game.physics.enable(this.dress1, Phaser.Physics.ARCADE);
@@ -61,22 +61,25 @@ TopDownGame.Game.prototype = {
             this.y+=0.1;
             this.enemy.y-=0.1;
             this.player.anchor.setTo(this.x, this.y);
+            this.player.direction = 'up'
         }
         else if(this.cursors.down.isDown){
             this.y-=0.1;
             this.enemy.y+=0.1;
-
             this.player.anchor.setTo(this.x, this.y);
+            this.player.direction = 'down'
         }
         else if(this.cursors.left.isDown){
             this.x+=0.1;
             this.enemy.x-=0.1
             this.player.anchor.setTo(this.x, this.y);
+            this.player.direction = 'left'
         }
         else if(this.cursors.right.isDown){
             this.x-=0.1;
             this.enemy.x+=0.1
             this.player.anchor.setTo(this.x, this.y);
+            this.player.direction = 'right'
         }
         //if(this.)
         this.enemy.anchor.setTo(this.enemy.x , this.enemy.y);
@@ -85,7 +88,28 @@ TopDownGame.Game.prototype = {
         this.game.physics.arcade.collide(this.player, this.dress2, collisionHandler, null, this);
         this.game.physics.arcade.collide(this.player, this.dress3, collisionHandler, null, this);
         this.game.physics.arcade.collide(this.player, this.dress4, collisionHandler, null, this);
+        
 
+        if(this.bullet) {
+            if(this.bullet.direction =="up"){
+                this.bullet.x += 0
+                this.bullet.y += 0.1
+            }else if(this.bullet.direction =="down"){
+                this.bullet.x-=0
+                this.bullet.y-=0.1
+            } else if(this.bullet.direction =="left"){
+                this.bullet.x-=0.1
+                this.bullet.y+=0
+            } else if(this.bullet.direction =="right"){
+                this.bullet.x+=0.1
+                this.bullet.y+=0
+            }
+            this.bullet.x -= 0.1
+            this.bullet.y -= 0
+                        console.log(this.bullet.x, this.bullet.y)
+
+            this.bullet.anchor.setTo(this.bullet.x, this.bullet.y)
+        }
         
         function collisionHandler (obj1, obj2) {
 
@@ -96,8 +120,16 @@ TopDownGame.Game.prototype = {
 
         }
       function fire(game){
+          
           console.log(game)
-          this.bullet = game.add.sprite(250,250,'circle')
+          if(!game.bullet) {
+              
+          game.bullet = game.add.sprite(250,250,'circle')
+          game.bullet.x = 0
+          game.bullet.y= 0;
+          game.bullet.direction = game.player.direction
+          game.bullet.anchor.setTo(game.bullet.x, game.bullet.y)
+          }
       }
     }
  
