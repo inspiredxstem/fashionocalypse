@@ -8,9 +8,13 @@ p {
     font-size: 30px;
     text-align: center;
 }
-img {
-    margin-left: 35%
-}
+
 button {
     color: red;
+    font-size: 50px;
+    font-family: 'Share Tech';
+    clear: both;
+}
+body {
+    text-align: center;
 }
