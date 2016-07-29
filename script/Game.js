@@ -7,8 +7,6 @@ TopDownGame.Game = function(){};
 TopDownGame.Game.prototype = {
     create: function(){
         var map;
-        var layer;
-        var p;
         var cursors;
         var dress1;
         var dress2;
